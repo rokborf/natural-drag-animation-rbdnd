@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config=webpack.build.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs/"
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "author": "Dmytro Lytvynenko <lytvynenko.dmytrij@gmail.com>",
   "license": "MIT",
@@ -26,6 +26,11 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^4.0.0-alpha.21",
+    "@storybook/addon-links": "^4.0.0-alpha.21",
+    "@storybook/addons": "^4.0.0-alpha.21",
+    "@storybook/react": "^4.0.0-alpha.21",
+    "@storybook/storybook-deployer": "^2.3.0",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.2",
     "copy-webpack-plugin": "^4.5.2",
@@ -38,10 +43,6 @@
     "react-beautiful-dnd": "^9.0.2",
     "react-dom": "^16.5.0",
     "webpack": "^4.17.2",
-    "webpack-cli": "^3.1.0",
-    "@storybook/react": "^4.0.0-alpha.21",
-    "@storybook/addon-actions": "^4.0.0-alpha.21",
-    "@storybook/addon-links": "^4.0.0-alpha.21",
-    "@storybook/addons": "^4.0.0-alpha.21"
+    "webpack-cli": "^3.1.0"
   }
 }
