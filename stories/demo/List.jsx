@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext } from 'react-beautiful-dnd-next';
 import Column from './Column';
 
 // fake data generator

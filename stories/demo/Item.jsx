@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Draggable } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd-next';
 
 import NaturalDragAnimation from '../../src';
 
@@ -34,7 +34,7 @@ class Item extends Component {
               snapshot.isDragging,
               provided.draggableProps.style,
             )}
-            isDragging={snapshot.isDragging}
+            snapshot={snapshot}
             {...props}
           >
             {style => (

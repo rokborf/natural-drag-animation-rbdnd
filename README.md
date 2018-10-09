@@ -23,7 +23,7 @@ import NaturalDragAnimation from 'natural-drag-animation-rbdnd';
 	  {(provided, snapshot) => (
 	    <NaturalDragAnimation
 	      style={provided.draggableProps.style}
-	      isDragging={snapshot.isDragging}
+	      snapshot={snapshot}
 	    >
 	      {style => (
 	        <div
@@ -49,8 +49,8 @@ to override styles from it.
 
 ## Props
 
-### isDragging (required)
-**Boolean.** In most cases just pass `snapshot.isDragging` from `Draggable`.
+### snapshot (required)
+**Object.** Pass `snapshot` from `Draggable`.
 
 ### style (required)
 **Object.** In most cases just pass `provided.draggableProps.style` from `Draggable`. `NaturalDragAnimation` patches `transform` from it.
@@ -64,6 +64,14 @@ to override styles from it.
 Number. Use it to define rotation multiplier.
 
 **default = 1.3**
+
+## Compatibility
+
+### Version 2
+Compatible with react-beautiful-dnd v.10
+
+### Version 1
+Compatible with react-beautiful-dnd v.9
     
 ## Author
 Dmytro Lytvynenko lytvynenko.dmytrij@gmail.com
