@@ -1,6 +1,6 @@
 {
   "name": "natural-drag-animation-rbdnd",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Addon for the 'react-beautiful-dnd' that adds natural dragging animation",
   "main": "build/index.js",
   "scripts": {
@@ -40,7 +40,7 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "react": "^16.5.0",
-    "react-beautiful-dnd": "^9.0.2",
+    "react-beautiful-dnd": "^10.0.0",
     "react-dom": "^16.5.0",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0"

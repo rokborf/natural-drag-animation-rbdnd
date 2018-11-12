@@ -3,10 +3,18 @@ import PropTypes from 'prop-types';
 
 let animationId;
 const sigmoid = x => x / (1 + Math.abs(x));
+const initialState = {
+  transform: null,
+  prevX: 0,
+  rotation: 0,
+};
 
 class NaturalDragAnimation extends Component {
   static propTypes = {
-    isDragging: PropTypes.bool.isRequired,
+    snapshot: PropTypes.shape({
+      isDragging: PropTypes.bool.isRequired,
+      dropAnimation: PropTypes.shape(),
+    }).isRequired,
     style: PropTypes.shape().isRequired,
     children: PropTypes.func.isRequired,
     animationRotationFade: PropTypes.number,
@@ -18,22 +26,26 @@ class NaturalDragAnimation extends Component {
     rotationMultiplier: 1.3,
   };
 
+  static getDerivedStateFromProps(props, state) {
+    if (props.snapshot.dropAnimation && state.transform) {
+      return {
+        ...initialState,
+      };
+    }
+
+    return null;
+  }
+
   state = {
-    transform: null,
+    ...initialState,
   };
 
-  velocity = 0;
-
-  prevX = 0;
-
-  rotation = 0;
-
   componentDidUpdate(prevProps) {
-    if (!prevProps.isDragging && this.props.isDragging) {
+    if (!prevProps.snapshot.isDragging && this.props.snapshot.isDragging) {
       animationId = requestAnimationFrame(this.patchTransform);
     }
 
-    if (prevProps.isDragging && !this.props.isDragging) {
+    if (prevProps.snapshot.isDragging && !this.props.snapshot.isDragging) {
       cancelAnimationFrame(animationId);
     }
   }
@@ -44,7 +56,9 @@ class NaturalDragAnimation extends Component {
 
   patchTransform = () => {
     const {
-      isDragging,
+      snapshot: {
+        isDragging,
+      },
       style,
       animationRotationFade,
       rotationMultiplier,
@@ -55,17 +69,21 @@ class NaturalDragAnimation extends Component {
         .match(/translate\(.{1,}\)/g)[0]
         .match(/-?[0-9]{1,}/g)[0];
 
-      this.velocity = currentX - this.prevX;
-      this.prevX = currentX;
+      const velocity = currentX - this.state.prevX;
+      const prevRotation = this.state.rotation;
 
-      this.rotation = this.rotation * animationRotationFade
-        + sigmoid(this.velocity) * rotationMultiplier;
+      let rotation = prevRotation * animationRotationFade
+        + sigmoid(velocity) * rotationMultiplier;
 
-      const newTransform = `${style.transform} rotate(${this.rotation}deg)`;
+      const newTransform = `${style.transform} rotate(${rotation}deg)`;
 
-      if (Math.abs(this.rotation) < 0.01) this.rotation = 0;
+      if (Math.abs(rotation) < 0.01) rotation = 0;
 
-      this.setState({ transform: newTransform }, () => {
+      this.setState({
+        transform: newTransform,
+        prevX: currentX,
+        rotation,
+      }, () => {
         animationId = requestAnimationFrame(this.patchTransform);
       });
     } else {
@@ -74,7 +92,9 @@ class NaturalDragAnimation extends Component {
   };
 
   render() {
-    const style = this.props.isDragging
+    const { snapshot: { isDragging, dropAnimation } } = this.props;
+
+    const style = isDragging && !dropAnimation
       ? {
         ...this.props.style,
         transform: this.state.transform,

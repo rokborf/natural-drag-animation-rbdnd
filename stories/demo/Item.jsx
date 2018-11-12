@@ -34,7 +34,7 @@ class Item extends Component {
               snapshot.isDragging,
               provided.draggableProps.style,
             )}
-            isDragging={snapshot.isDragging}
+            snapshot={snapshot}
             {...props}
           >
             {style => (
