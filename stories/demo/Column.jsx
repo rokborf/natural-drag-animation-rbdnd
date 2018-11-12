@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Droppable } from 'react-beautiful-dnd-next';
+import { Droppable } from 'react-beautiful-dnd';
 
 import Item from './Item';
 

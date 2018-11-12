@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Draggable } from 'react-beautiful-dnd-next';
+import { Draggable } from 'react-beautiful-dnd';
 
 import NaturalDragAnimation from '../../src';
 
