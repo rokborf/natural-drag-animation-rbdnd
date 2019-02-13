@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 let animationId;
@@ -101,7 +101,7 @@ class NaturalDragAnimation extends Component {
       }
       : this.props.style;
 
-    return <div>{this.props.children(style)}</div>;
+    return <Fragment>{this.props.children(style)}</Fragment>;
   }
 }
 
