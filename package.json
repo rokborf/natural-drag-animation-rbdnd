@@ -1,6 +1,6 @@
 {
   "name": "natural-drag-animation-rbdnd",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Addon for the 'react-beautiful-dnd' that adds natural dragging animation",
   "main": "build/index.js",
   "scripts": {
