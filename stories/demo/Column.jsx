@@ -16,7 +16,7 @@ class Column extends Component {
     static propTypes = {
       droppableId: PropTypes.string.isRequired,
       data: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-    }
+    };
 
     render() {
       const { droppableId, data, ...props } = this.props;

@@ -12,6 +12,7 @@ module.exports = {
   rules: {
     'react/destructuring-assignment': 'off',
     'react/jsx-filename-extension': 'off',
+    'react/prop-types': 'off',
     'import/no-extraneous-dependencies': 'off'
   }
 };

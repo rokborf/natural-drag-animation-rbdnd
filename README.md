@@ -68,7 +68,7 @@ Number. Use it to define rotation multiplier.
 ## Compatibility
 
 ### Version 2
-Compatible with react-beautiful-dnd v.10
+Compatible with react-beautiful-dnd v.10+
 
 ### Version 1
 Compatible with react-beautiful-dnd v.9
