@@ -19,11 +19,13 @@ class NaturalDragAnimation extends Component {
     children: PropTypes.func.isRequired,
     animationRotationFade: PropTypes.number,
     rotationMultiplier: PropTypes.number,
+    sigmoidFunction: PropTypes.func,
   };
 
   static defaultProps = {
     animationRotationFade: 0.9,
     rotationMultiplier: 1.3,
+    sigmoidFunction: sigmoid,
   };
 
   static getDerivedStateFromProps(props, state) {
@@ -39,6 +41,13 @@ class NaturalDragAnimation extends Component {
   state = {
     ...initialState,
   };
+
+  // added to support React.Portal
+  componentDidMount() {
+    if (this.props.snapshot.isDragging) {
+      animationId = requestAnimationFrame(this.patchTransform);
+    }
+  }
 
   componentDidUpdate(prevProps) {
     if (!prevProps.snapshot.isDragging && this.props.snapshot.isDragging) {
@@ -62,6 +71,7 @@ class NaturalDragAnimation extends Component {
       style,
       animationRotationFade,
       rotationMultiplier,
+      sigmoidFunction,
     } = this.props;
 
     if (isDragging && style.transform) {
@@ -73,7 +83,7 @@ class NaturalDragAnimation extends Component {
       const prevRotation = this.state.rotation;
 
       let rotation = prevRotation * animationRotationFade
-        + sigmoid(velocity) * rotationMultiplier;
+        + sigmoidFunction(velocity) * rotationMultiplier;
 
       const newTransform = `${style.transform} rotate(${rotation}deg)`;
 
