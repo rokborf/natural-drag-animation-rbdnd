@@ -4,7 +4,7 @@ Addon for the [react-beautiful-dnd](https://github.com/atlassian/react-beautiful
 ## Demo
 https://rokborf.github.io/natural-drag-animation-rbdnd/
 
-## Instalation
+## Installation
 ```
 # yarn
 yarn add natural-drag-animation-rbdnd
