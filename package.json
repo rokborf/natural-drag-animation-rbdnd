@@ -29,7 +29,7 @@
     "@storybook/addon-actions": "^4.1.18",
     "@storybook/addon-links": "^4.1.18",
     "@storybook/addons": "^4.1.18",
-    "@storybook/react": "^4.1.18",
+    "@storybook/react": "^6.5.12",
     "@storybook/storybook-deployer": "^2.8.7",
     "babel-eslint": "^9.0.0",
     "babel-loader": "^8.2.2",
