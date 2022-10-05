@@ -4,13 +4,18 @@ Addon for the [react-beautiful-dnd](https://github.com/atlassian/react-beautiful
 ## Demo
 https://rokborf.github.io/natural-drag-animation-rbdnd/
 
-## Instalation
+## Installation
 ```
 # yarn
 yarn add natural-drag-animation-rbdnd
 
 # npm
 npm install natural-drag-animation-rbdnd
+```
+
+If you're using typescript in your project, you might as well want to install the types.
+```
+npm i @types/natural-drag-animation-rbdnd
 ```
 
 ## Example
